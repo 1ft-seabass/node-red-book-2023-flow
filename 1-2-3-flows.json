@@ -1,0 +1,218 @@
+[
+    {
+        "id": "4ac77b21b0084cd3",
+        "type": "inject",
+        "z": "7b5f6aa326c886ef",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 340,
+        "y": 780,
+        "wires": [
+            [
+                "f52d38589249b18e"
+            ]
+        ]
+    },
+    {
+        "id": "f52d38589249b18e",
+        "type": "change",
+        "z": "7b5f6aa326c886ef",
+        "name": "$fromMillis で ISO 8601 日時文字列変換",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$fromMillis(payload)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 780,
+        "wires": [
+            [
+                "b1197de7144e43e2"
+            ]
+        ]
+    },
+    {
+        "id": "b1197de7144e43e2",
+        "type": "debug",
+        "z": "7b5f6aa326c886ef",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1000,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "e4837c6469463465",
+        "type": "inject",
+        "z": "7b5f6aa326c886ef",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 340,
+        "y": 920,
+        "wires": [
+            [
+                "6b8b92b8d9b09d8b"
+            ]
+        ]
+    },
+    {
+        "id": "6b8b92b8d9b09d8b",
+        "type": "change",
+        "z": "7b5f6aa326c886ef",
+        "name": "$fromMillis で ISO 8601 日時フォーマット 年/月/日",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$fromMillis(payload,'[Y0001]/[M01]/[D01]')",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 670,
+        "y": 920,
+        "wires": [
+            [
+                "e36b5b3a14f0587b"
+            ]
+        ]
+    },
+    {
+        "id": "e36b5b3a14f0587b",
+        "type": "debug",
+        "z": "7b5f6aa326c886ef",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1000,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "506e3a0e9170ea8f",
+        "type": "inject",
+        "z": "7b5f6aa326c886ef",
+        "name": "2023-07-24T02:15:36.269Z という文字列",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "2023-07-24T02:15:36.269Z",
+        "payloadType": "str",
+        "x": 420,
+        "y": 1060,
+        "wires": [
+            [
+                "f42c0a5dabd6b2a6"
+            ]
+        ]
+    },
+    {
+        "id": "f01ce2171e0637e0",
+        "type": "debug",
+        "z": "7b5f6aa326c886ef",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1000,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "f42c0a5dabd6b2a6",
+        "type": "change",
+        "z": "7b5f6aa326c886ef",
+        "name": "$toMillis で ISO 8601 日時をミリ秒変換",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$toMillis(payload)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 760,
+        "y": 1060,
+        "wires": [
+            [
+                "f01ce2171e0637e0"
+            ]
+        ]
+    }
+]

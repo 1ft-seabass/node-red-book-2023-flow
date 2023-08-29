@@ -1,0 +1,74 @@
+[
+    {
+        "id": "d3347e547e3b55fd",
+        "type": "inject",
+        "z": "7b5f6aa326c886ef",
+        "name": "JSON  サンプル",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"data\":[{\"name\":\"商品1\",\"price\":300},{\"name\":\"商品2\",\"price\":80},{\"name\":\"商品3\",\"price\":1200},{\"name\":\"商品4\",\"price\":550},{\"name\":\"商品5\",\"price\":700}]}",
+        "payloadType": "json",
+        "x": 360,
+        "y": 260,
+        "wires": [
+            [
+                "16e648fc20643754"
+            ]
+        ]
+    },
+    {
+        "id": "16e648fc20643754",
+        "type": "change",
+        "z": "7b5f6aa326c886ef",
+        "name": "price 500 以上を抽出",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.data[ price > 500 ]",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 620,
+        "y": 260,
+        "wires": [
+            [
+                "4b1bca561e8fc00a"
+            ]
+        ]
+    },
+    {
+        "id": "4b1bca561e8fc00a",
+        "type": "debug",
+        "z": "7b5f6aa326c886ef",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 880,
+        "y": 260,
+        "wires": []
+    }
+]

@@ -1,0 +1,74 @@
+[
+    {
+        "id": "9af3e9a8b7fe0f2f",
+        "type": "inject",
+        "z": "7b5f6aa326c886ef",
+        "name": "JSON  サンプル",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"data\":[{\"name\":\"商品1\",\"price\":300},{\"name\":\"商品2\",\"price\":80},{\"name\":\"商品3\",\"price\":1200},{\"name\":\"商品4\",\"price\":550},{\"name\":\"商品5\",\"price\":700}]}",
+        "payloadType": "json",
+        "x": 360,
+        "y": 440,
+        "wires": [
+            [
+                "952014fc699c6897"
+            ]
+        ]
+    },
+    {
+        "id": "952014fc699c6897",
+        "type": "change",
+        "z": "7b5f6aa326c886ef",
+        "name": "price 集計",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$sum(payload.data.price)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 440,
+        "wires": [
+            [
+                "a134e0f6a21af23d"
+            ]
+        ]
+    },
+    {
+        "id": "a134e0f6a21af23d",
+        "type": "debug",
+        "z": "7b5f6aa326c886ef",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 880,
+        "y": 440,
+        "wires": []
+    }
+]
